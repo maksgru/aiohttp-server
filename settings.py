@@ -9,4 +9,3 @@ def get_config(path):
         config = yaml.safe_load(file)
     return config
 config = get_config(config_path)
-print(config)
