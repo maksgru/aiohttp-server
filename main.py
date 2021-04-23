@@ -1,12 +1,14 @@
-from server.controllers.users import get_users
+from server.controllers import set_routes
 from aiohttp import web
+import aiohttp_debugtoolbar
 import logging
 from server.database.db import init_pg, close_pg
-from settings import config 
+from config import config
 from server.routes import web_routes
 
 routes = web_routes(web)
 app = web.Application()
+aiohttp_debugtoolbar.setup(app)
 app['config'] = config
 app.on_startup.append(init_pg)
 app.on_cleanup.append(close_pg)

@@ -1,0 +1,10 @@
+{
+  "python.pythonPath": "env/bin/python",
+  "[python]": {
+
+    "gitlens.codeLens.symbolScopes": [
+      "!Module"
+    ],
+    "editor.wordBasedSuggestions": false
+  }
+}

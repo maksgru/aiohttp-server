@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, MetaData
 from server.database.models.user import user
-from settings import config
+from config import config
 
 DSN = 'postgresql://{user}:{password}@{host}:{port}/{database}'
 

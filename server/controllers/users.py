@@ -1,7 +1,6 @@
 from server.services import user
 from aiohttp import web
 
-
 async def get_one_user(request: web.Request):
     try:
         db = request.app['db'].acquire
@@ -19,9 +18,11 @@ async def get_users(request: web.Request):
     except Exception as exc:
         return web.json_response({'message': exc.args})
 
-
 async def create_user(request: web.Request):
-    db = request.app['db'].acquire
-    data = await request.json()
-    new_user = await user.create_user(db, data)
-    return web.json_response(new_user)
+    try:
+        db = request.app['db'].acquire
+        data = await request.json()
+        new_user = await user.create_user(db, data)
+        return web.json_response(new_user)
+    except Exception as exc:
+        return web.json_response({'message': exc.args})
