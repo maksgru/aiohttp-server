@@ -1,8 +1,7 @@
-from server.controllers import set_routes
 from aiohttp import web
 import aiohttp_debugtoolbar
 import logging
-from server.database.db import init_pg, close_pg
+from server.db import init_pg, close_pg
 from config import config
 from server.routes import web_routes
 

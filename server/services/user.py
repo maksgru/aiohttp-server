@@ -1,12 +1,12 @@
 from sqlalchemy.sql.elements import literal_column
-from server.database.models.user import user
+from server.db.models.user import user
 
 
 async def create_user(db, data):
     async with db() as conn:
         created = await conn.execute(user.insert()
-            .returning(literal_column('*'))
-            .values(email=data['email']))
+            .returning(literal_column('id, email'))
+            .values(**data))
             
         new_user = await created.fetchone()
         return dict(new_user)

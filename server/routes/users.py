@@ -1,7 +1,7 @@
 from aiohttp import web
 from server.controllers.users import get_users, get_one_user, create_user
 
-def user_routes(route: web.RouteTableDef):
+def routes(route: web.RouteTableDef):
     return [
         route.get('/', get_users),
         route.get('/{id}', get_one_user),
